@@ -96,4 +96,23 @@ class MahasiswaHelper(context: Context) {
         cursor.close()
         return arrayList
     }
+
+    // kalau gagal memproses data jangan gunakan transaction
+    fun beginTransaction() {
+        database.beginTransaction()
+    }
+    fun setTransactionSuccess() {
+        database.setTransactionSuccessful()
+    }
+    fun endTransaction() {
+        database.endTransaction()
+    }
+    fun insertTransaction(mahasiswaModel: MahasiswaModel) {
+        val sql = ("INSERT INTO $TABLE_NAME ($NAMA, $NIM) VALUES (?, ?)")
+        val stmt = database.compileStatement(sql)
+        stmt.bindString(1, mahasiswaModel.name)
+        stmt.bindString(2, mahasiswaModel.nim)
+        stmt.execute()
+        stmt.clearBindings()
+    }
 }

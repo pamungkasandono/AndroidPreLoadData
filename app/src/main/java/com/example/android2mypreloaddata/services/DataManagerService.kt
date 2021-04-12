@@ -119,6 +119,22 @@ class DataManagerService : Service(), CoroutineScope {
                 Log.d(TAG, "doInBackground: Exception")
                 isInsertSuccess = false
             }
+//            try {
+//                mahasiswaHelper.beginTransaction()
+//                for (model in mahasiswaModel) {
+//                    mahasiswaHelper.insertTransaction(model)
+//                    progress += progressDiff
+//                    publishProgress(progress as Int)
+//                }
+//                mahasiswaHelper.setTransactionSuccess()
+//                isInsertSuccess = true
+//                appPreference.firstRun = false
+//            } catch (e: Exception) {
+//                Log.e(TAG, "doInBackground: Exception")
+//                isInsertSuccess = false
+//            } finally {
+//                mahasiswaHelper.endTransaction()
+//            }
 
             // akhir dari insert query
             mahasiswaHelper.close()
