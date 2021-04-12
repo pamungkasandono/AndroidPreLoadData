@@ -119,12 +119,39 @@ class DataManagerService : Service(), CoroutineScope {
                 Log.d(TAG, "doInBackground: Exception")
                 isInsertSuccess = false
             }
+
+            // transaction
 //            try {
 //                mahasiswaHelper.beginTransaction()
-//                for (model in mahasiswaModel) {
-//                    mahasiswaHelper.insertTransaction(model)
-//                    progress += progressDiff
-//                    publishProgress(progress as Int)
+////                for (model in mahasiswaModel) {
+////                    mahasiswaHelper.insertTransaction(model)
+////                    progress += progressDiff
+////                    publishProgress(progress as Int)
+////
+////                }
+//                loop@ for (model in mahasiswaModel) {
+//                    //Jika service atau activity dalam keadaan destroy maka akan menghentikan perulangan
+//                    when {
+//                        job.isCancelled -> break@loop
+//                        else -> {
+//                            mahasiswaHelper.insertTransaction(model)
+//                            progress += progressDiff
+//                            publishProgress(progress.toInt())
+//                        }
+//                    }
+//                }
+//
+//                when {
+//                    job.isCancelled -> {
+//                        isInsertSuccess = false
+//                        appPreference.firstRun = true
+//                        sendMessage(CANCEL_MESSAGE)
+//                    }
+//                    else -> {
+//                        mahasiswaHelper.setTransactionSuccess()
+//                        isInsertSuccess = true
+//                        appPreference.firstRun = false
+//                    }
 //                }
 //                mahasiswaHelper.setTransactionSuccess()
 //                isInsertSuccess = true
